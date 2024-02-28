@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
 import Button from './Button'
 import { useState } from 'react';
@@ -13,7 +14,7 @@ const Navbar = () => {
     let [isOpen,setisOpen] = useState(false);
   return (
     <>
-        <div className='shadow-md w-full fixed top-0 left-0'>
+        <div className='shadow-md w-full z-[10] fixed top-0 left-0'>
             <div className='md:flex items-center justify-between bg-sky-200 py-4 md:px-10 px-7'>
                 <div className='font-bold text-2xl cursor-pointer flex items-center font-[Poppins] text-gray-800'>
                     OCR System

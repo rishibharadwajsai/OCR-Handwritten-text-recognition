@@ -30,6 +30,12 @@ const Board2 = () => {
             fabricCanvas.renderAll.bind(fabricCanvas);
         }
     }
+
+    const clearCanvas = () => {
+        if(fabricCanvas) {
+            fabricCanvas.clear();
+        }
+    }
     return(
         <div className="container w-full h-full mt-[3rem]">
         <p> White Board</p>
@@ -41,6 +47,13 @@ const Board2 = () => {
                     <label> Pen Width - {penWidth} </label>
                     <input type="range" onChange={e => changePenWidth(e.target.value)} value={penWidth} min={1} max={30}></input>
                 </div>
+                {/* <div>
+                    <label> Pen Color-</label>
+                </div> */}
+
+                <button onClick={() => clearCanvas()} type="button" className="bg-red-600 hover:bg-red-700 px-6 py-3 text-white">
+                    Clear Whiteboard
+                </button>
             </div>
         </div>
     )

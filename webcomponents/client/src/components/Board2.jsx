@@ -70,6 +70,7 @@ import { fabric } from "fabric";
 const Board2 = () => {
   const [penWidth, setPenWidth] = useState(3);
   const [fabricCanvas, setFabricCanvas] = useState();
+  const [drawingImage, setDrawingImage] = useState(null);
 
   const canvasRef = useRef(null);
 
@@ -101,7 +102,7 @@ const Board2 = () => {
     }
   };
 
-  const captureAndSendImage = () => {
+  const captureDrawingImage = () => {
     if (fabricCanvas) {
       const dataURL = fabricCanvas.toDataURL({
         format: "png", // Change to "jpeg" for JPEG format
@@ -114,23 +115,30 @@ const Board2 = () => {
       // Create a File object from Blob
       const file = new File([blob], "drawing.png", { type: "image/png" });
 
-      // Now you can send the 'file' to your ML model
-      // Example:
-      const formData = new FormData();
-      formData.append("image", file);
-      fetch("/your-ml-endpoint", {
-        method: "POST",
-        body: formData,
-      })
-      .then(response => response.json())
-      .then(data => {
-        // Handle response from ML model
-        console.log("ML Model response:", data);
-      })
-      .catch(error => {
-        console.error("Error:", error);
-      });
+      // Display captured image to the user
+      setDrawingImage(dataURL);
+
+      // Send the captured image to the model
+      sendToModel(file);
     }
+  };
+
+  const sendToModel = (file) => {
+    // Send the 'file' to your ML model
+    // Example:
+    // const formData = new FormData();
+    // formData.append("image", file);
+    // fetch("/your-ml-endpoint", {
+    //   method: "POST",
+    //   body: formData,
+    // })
+    // .then(response => response.json())
+    // .then(data => {
+    //   // Handle response from ML model
+    // })
+    // .catch(error => {
+    //   console.error("Error:", error);
+    // });
   };
 
   const dataURLtoBlob = (dataURL) => {
@@ -171,13 +179,20 @@ const Board2 = () => {
         </button>
 
         <button
-          onClick={() => captureAndSendImage()}
+          onClick={() => captureDrawingImage()}
           type="button"
           className="bg-blue-600 hover:bg-blue-700 px-6 py-3 text-white"
         >
           Submit
         </button>
       </div>
+
+      {drawingImage && (
+        <div className="mt-4">
+          <p className="text-lg font-semibold mb-2">Captured Drawing:</p>
+          <img src={drawingImage} alt="Captured Drawing" />
+        </div>
+      )}
     </div>
   );
 };

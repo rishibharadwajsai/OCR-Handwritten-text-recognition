@@ -19,27 +19,27 @@
 // export default App
 
 
-import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { default as Switch } from 'react-router-dom/esm/react-router-dom.min.js';
+import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Foreground from './components/Foreground';
 import Board2 from './components/Board2';
 import TesseractOCR from './pages/TesseractOCR';
 
 const App = () => {
-  return (
-    <Router>
-      <div>
-        <Navbar />
-        <Switch>
-          <Route path='/board2' component={Board2} />
-          <Route path='/tesseract' component={TesseractOCR} />
-          <Route path='/' component={Foreground} />
-        </Switch>
-      </div>
-    </Router>
-  );
-}
+    const [isBoard2Active, setIsBoard2Active] = useState(true);
+
+    const handleSwitchButtonClick = () => {
+        setIsBoard2Active(prevState => !prevState);
+    };
+
+    return (
+        <>
+            <Navbar onSwitchButtonClick={handleSwitchButtonClick} />
+            <Foreground isBoard2Active={isBoard2Active} />
+        </>
+    );
+};
 
 export default App;
+
+

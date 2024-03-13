@@ -53,7 +53,7 @@
 
 //                 <button onClick={() => clearCanvas()} type="button" className="bg-red-600 hover:bg-red-700 px-6 py-3 text-white">
 //                     Clear Whiteboard
-//                 </button>
+                // </button>
 //             </div>
 //         </div>
 //     )

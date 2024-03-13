@@ -250,7 +250,12 @@ const Board2 = () => {
 
   const clearCanvas = () => {
     if (fabricCanvas) {
-      fabricCanvas.clear();
+      fabricCanvas.getObjects().forEach(obj => {
+        if (obj.type === 'path' || obj.type === 'group') {
+          fabricCanvas.remove(obj);
+        }
+      });
+      fabricCanvas.renderAll();
     }
   };
 
@@ -259,7 +264,6 @@ const Board2 = () => {
       const dataURL = fabricCanvas.toDataURL({
         format: "png", // Change to "jpeg" for JPEG format
         quality: 1.0, // Quality (0.0 - 1.0)
-        backgroundColor: fabricCanvas.backgroundColor // Add this line
       });
 
       // Convert dataURL to Blob
@@ -367,4 +371,3 @@ const Board2 = () => {
 };
 
 export default Board2;
-

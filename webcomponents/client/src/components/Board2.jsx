@@ -98,7 +98,8 @@
 
 //   const clearCanvas = () => {
 //     if (fabricCanvas) {
-//       fabricCanvas.clear();
+//       fabricCanvas.remove(...fabricCanvas.getObjects()); // Remove all drawn objects
+//       fabricCanvas.renderAll(); // Render the updated canvas
 //     }
 //   };
 
@@ -235,8 +236,7 @@ const Board2 = () => {
 
   const clearCanvas = () => {
     if (fabricCanvas) {
-      fabricCanvas.remove(...fabricCanvas.getObjects()); // Remove all drawn objects
-      fabricCanvas.renderAll(); // Render the updated canvas
+      fabricCanvas.clear();
     }
   };
 
@@ -291,6 +291,15 @@ const Board2 = () => {
     return new Blob([u8arr], { type: mime });
   };
 
+  const downloadImage = () => {
+    const link = document.createElement("a");
+    link.href = drawingImage;
+    link.download = "drawing.png";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div className="container w-full h-full mt-[3rem]">
       <p> White Board</p>
@@ -329,6 +338,13 @@ const Board2 = () => {
         <div className="mt-4">
           <p className="text-lg font-semibold mb-2">Captured Drawing:</p>
           <img src={drawingImage} alt="Captured Drawing" />
+          <button
+            onClick={() => downloadImage()}
+            type="button"
+            className="bg-green-600 hover:bg-green-700 px-6 py-3 text-white mt-4"
+          >
+            Download Image
+          </button>
         </div>
       )}
     </div>
@@ -336,3 +352,4 @@ const Board2 = () => {
 };
 
 export default Board2;
+

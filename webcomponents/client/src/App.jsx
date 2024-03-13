@@ -4,7 +4,7 @@ import Navbar from './components/Navbar'
 import Board2 from './components/Board2'
 import Foreground from './components/Foreground'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import TesseractOCR from '../pages/TesseractOCR';
+import TesseractOCR from './pages/TesseractOCR';
 
 
 

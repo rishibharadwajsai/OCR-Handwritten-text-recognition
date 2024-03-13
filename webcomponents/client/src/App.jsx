@@ -20,7 +20,8 @@
 
 
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { default as Switch } from 'react-router-dom/esm/react-router-dom.min.js';
 import Navbar from './components/Navbar';
 import Foreground from './components/Foreground';
 import Board2 from './components/Board2';

@@ -18,9 +18,17 @@ import TesseractOCR from '../pages/TesseractOCR'
 // }
 
 const Foreground = ({ isBoard2Active }) => {
-  return (
+return (
       <>
           {isBoard2Active ? <Board2 /> : <TesseractOCR />}
+          onChange={(event) => {
+              const files = event.target.files;
+              files[0] && setFileName(files[0].name);
+              if (files) {
+                  setImage(URL.createObjectURL(files[0]));
+              }
+}}
+
       </>
   );
 };

@@ -116,19 +116,20 @@ const Board2 = () => {
 
       // Now you can send the 'file' to your ML model
       // Example:
-      // const formData = new FormData();
-      // formData.append("image", file);
-      // fetch("/your-ml-endpoint", {
-      //   method: "POST",
-      //   body: formData,
-      // })
-      // .then(response => response.json())
-      // .then(data => {
-      //   // Handle response from ML model
-      // })
-      // .catch(error => {
-      //   console.error("Error:", error);
-      // });
+      const formData = new FormData();
+      formData.append("image", file);
+      fetch("/your-ml-endpoint", {
+        method: "POST",
+        body: formData,
+      })
+      .then(response => response.json())
+      .then(data => {
+        // Handle response from ML model
+        console.log("ML Model response:", data);
+      })
+      .catch(error => {
+        console.error("Error:", error);
+      });
     }
   };
 
@@ -174,7 +175,7 @@ const Board2 = () => {
           type="button"
           className="bg-blue-600 hover:bg-blue-700 px-6 py-3 text-white"
         >
-          Send Image to ML Model
+          Submit
         </button>
       </div>
     </div>

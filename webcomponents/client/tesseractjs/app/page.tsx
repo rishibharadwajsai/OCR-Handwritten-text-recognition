@@ -81,7 +81,10 @@
 // export default Home;
 
 
+"use client";
 
+import Card from "@/components/cards/card";
+import convertor from "@/components/lib/convertor";
 import React, { useRef, useState } from "react";
 import { BsImageFill } from "react-icons/bs";
 import { useHistory } from "react-router-dom"; // Import useHistory hook
@@ -106,11 +109,6 @@ const Home = () => {
       });
       setProcessing(false);
     }
-  };
-
-  // Function to navigate to the external link
-  const handleSwitchButtonClick = () => {
-    window.open("https://handwritten-text-recognition-master-eight.vercel.app/", "_blank");
   };
 
   return (
@@ -158,9 +156,6 @@ const Home = () => {
             </span>
           </div>
         </div>
-        <button onClick={handleSwitchButtonClick} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-          Switch
-        </button>
         {texts.map((t, i) => {
           return <Card t={t} i={i} key={i} />;
         })}

@@ -5,8 +5,8 @@ import TesseractOCR from '../pages/TesseractOCR'
 const Foreground = () => {
   return (
     <>
-      {/* <Board2 /> */}
-      <TesseractOCR />
+      <Board2 />
+{/*       <TesseractOCR /> */}
       {/* onChange={({target: {files}}) => {
                             files[0] && setFileName(files[0].name)
                             if(files) {

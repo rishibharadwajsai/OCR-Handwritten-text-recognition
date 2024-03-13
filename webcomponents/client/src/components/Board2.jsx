@@ -63,35 +63,29 @@
 
 
 
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useState } from "react";
 import { fabric } from "fabric";
 
 const Board2 = () => {
-  const [penWidth, setPenWidth] = useState(3);
-  const [fabricCanvas, setFabricCanvas] = useState();
+  const canvasRef = useRef(null);
+  const [fabricCanvas, setFabricCanvas] = useState(null);
+  const [penWidth, setPenWidth] = useState(5);
   const [drawingImage, setDrawingImage] = useState(null);
 
-  const canvasRef = useRef(null);
-
-  useEffect(() => {
+  const initCanvas = () => {
     const canvas = new fabric.Canvas(canvasRef.current, {
-      backgroundColor: "gray",
-      width: 1290,
-      height: 400,
       isDrawingMode: true,
+      backgroundColor: "white",
     });
+    canvas.freeDrawingBrush.color = "black";
+    canvas.freeDrawingBrush.width = penWidth;
     setFabricCanvas(canvas);
+  };
 
-    return () => {
-      canvas.dispose();
-    };
-  }, [canvasRef]);
-
-  const changePenWidth = (width) => {
+  const changePenWidth = (value) => {
+    setPenWidth(value);
     if (fabricCanvas) {
-      fabricCanvas.freeDrawingBrush.width = width;
-      setPenWidth(width);
-      fabricCanvas.renderAll.bind(fabricCanvas);
+      fabricCanvas.freeDrawingBrush.width = value;
     }
   };
 
@@ -104,40 +98,20 @@ const Board2 = () => {
   const captureDrawingImage = () => {
     if (fabricCanvas) {
       const dataURL = fabricCanvas.toDataURL({
-        format: "png", // Change to "jpeg" for JPEG format
-        quality: 1.0, // Quality (0.0 - 1.0)
+        format: "png",
+        quality: 1.0,
       });
 
-      // Convert dataURL to Blob
       const blob = dataURLtoBlob(dataURL);
-
-      // Create a File object from Blob
       const file = new File([blob], "drawing.png", { type: "image/png" });
 
-      // Display captured image to the user
       setDrawingImage(dataURL);
-
-      // Send the captured image to the model
       sendToModel(file);
     }
   };
 
   const sendToModel = (file) => {
     // Send the 'file' to your ML model
-    // Example:
-    // const formData = new FormData();
-    // formData.append("image", file);
-    // fetch("/your-ml-endpoint", {
-    //   method: "POST",
-    //   body: formData,
-    // })
-    // .then(response => response.json())
-    // .then(data => {
-    //   // Handle response from ML model
-    // })
-    // .catch(error => {
-    //   console.error("Error:", error);
-    // });
   };
 
   const dataURLtoBlob = (dataURL) => {
@@ -208,6 +182,8 @@ const Board2 = () => {
           </button>
         </div>
       )}
+
+      {!fabricCanvas && <div className="mt-4">Initializing canvas...</div>}
     </div>
   );
 };

@@ -75,9 +75,11 @@ const Navbar = ({ onSwitchButtonClick }) => {
                                 </li>
                             ))
                         }
-                        <Button onClick={onSwitchButtonClick}>
+                        <a href="https://handwritten-text-recognition-master-l7ak.vercel.app/">
+                        <Button>
                             Switch
                         </Button>
+                        </a>
                     </ul>
                 </div>
             </div>

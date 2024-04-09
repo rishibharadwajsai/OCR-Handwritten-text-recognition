@@ -33,11 +33,6 @@ const Home = () => {
           Tesseract Js{" "}
         </span>
       </h1>
-      <a href="https://handwritten-text-recognition-master-l7ak.vercel.app/">
-                        <Button>
-                            Switch
-                        </Button>
-              </a>
       <input
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           e.preventDefault();

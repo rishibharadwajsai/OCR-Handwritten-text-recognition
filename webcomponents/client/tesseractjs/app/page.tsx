@@ -27,9 +27,9 @@ const Home = () => {
   };
   return (
     <div className="min-h-[90vh]">
-      <h1 className="text-white text-4xl md:text-6xl text-center px-5 pt-5 font-[800] ">
+      <h1 className="text-black text-4xl md:text-6xl text-center px-5 pt-5 font-[800] ">
         Built With{" "}
-        <span className="bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 inline-block text-transparent bg-clip-text">
+        <span className="text-black inline-block text-transparent bg-clip-text">
           Tesseract Js{" "}
         </span>
       </h1>

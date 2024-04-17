@@ -28,9 +28,9 @@ const Home = () => {
   return (
     <div className="min-h-[90vh]">
       <h1 className="text-black text-4xl md:text-6xl text-center px-5 pt-5 font-[800] ">
-        Built With{" "}
+        Upload Your{" "}
         <span className="text-black inline-block bg-clip-text">
-          Tesseract Js{" "}
+          Image{" "}
         </span>
       </h1>
       <input

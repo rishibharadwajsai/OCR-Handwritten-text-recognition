@@ -1,0 +1,17 @@
+<!-- output.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prediction Output</title>
+</head>
+<body>
+    <h1>Prediction Output</h1>
+    <!--<img src="{{ url_for('static',filename=image_file) }}" alt="Uploaded Image">-->
+    <p>Text:<br>
+    {% for line in prediction.split("<br>") %}
+        <p>{{ line }}</p>
+    {% endfor %}
+    </p>
+</body>
+</html>

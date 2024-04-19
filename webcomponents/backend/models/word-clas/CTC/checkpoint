@@ -1,0 +1,6 @@
+model_checkpoint_path: "Classifier2-16500"
+all_model_checkpoint_paths: "Classifier2-14500"
+all_model_checkpoint_paths: "Classifier2-15000"
+all_model_checkpoint_paths: "Classifier2-15500"
+all_model_checkpoint_paths: "Classifier2-16000"
+all_model_checkpoint_paths: "Classifier2-16500"

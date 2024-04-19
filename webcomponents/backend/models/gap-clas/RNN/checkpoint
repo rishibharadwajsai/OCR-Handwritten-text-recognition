@@ -1,0 +1,2 @@
+model_checkpoint_path: "Bi-RNN-new"
+all_model_checkpoint_paths: "Bi-RNN-new"

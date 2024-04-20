@@ -40,5 +40,5 @@ def upload():
         return render_template('output.html',prediction=result)
     return render_template('upload.html')
 
-# if __name__ == '__main__':
-#     app.run(debug=False, host = '0.0.0.0')
+if __name__ == '__main__':
+    app.run(port=3000,debug=True)

@@ -10,7 +10,7 @@
 from flask import Flask, render_template, request
 import os
 import main
-import cv2
+import cv2 # type: ignore
 app = Flask(__name__)
 
 @app.route('/')

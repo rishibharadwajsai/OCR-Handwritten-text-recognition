@@ -32,6 +32,7 @@ def upload():
         #print(result)
         # Redirect to a success page
         #return redirect(url_for('index'),prediction=result)
+        os.remove(file_path)
         return render_template('output.html',prediction=result)
     return render_template('upload.html')
 

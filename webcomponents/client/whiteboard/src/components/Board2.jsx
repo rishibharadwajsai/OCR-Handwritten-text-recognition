@@ -168,7 +168,7 @@ const Board2 = () => {
 
   useEffect(() => {
     const canvas = new fabric.Canvas(canvasRef.current, {
-      backgroundColor: "gray",
+      backgroundColor: "white",
       width: 1290,
       height: 400,
       isDrawingMode: true,
